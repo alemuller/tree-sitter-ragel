@@ -1,0 +1,74 @@
+===============================================================
+Factor, AlphabetNum, Uint
+===============================================================
+fsm = 0;
+fsm = 9;
+---
+
+(specification
+  (machine_def
+    name: (word)
+    expr: (uint))
+  (machine_def
+    name: (word)
+    expr: (uint)))
+
+===============================================================
+Factor, AlphabetNum, Neg (signed)
+===============================================================
+fsm = +1;
+fsm = -1;
+---
+
+(specification
+  (machine_def
+    name: (word)
+    expr: (signed (uint)))
+  (machine_def
+    name: (word)
+    expr: (signed (uint))))
+
+===============================================================
+Factor, AlphabetNum, Hex
+===============================================================
+fsm = 0x0123456789;
+fsm = 0xabcdef;
+fsm = 0xABCDEF;
+---
+
+(specification
+  (machine_def
+    name: (word)
+    expr: (hex))
+  (machine_def
+    name: (word)
+    expr: (hex))
+  (machine_def
+    name: (word)
+    expr: (hex)))
+
+===============================================================
+Factor, Word
+===============================================================
+fsm = word;
+---
+
+(specification
+  (machine_def
+    name: (word)
+    expr: (word)))
+
+===============================================================
+Factor, String
+===============================================================
+fsm = 'foo';
+fsm = "bar";
+---
+
+(specification
+  (machine_def
+    name: (word)
+    expr: (string))
+  (machine_def
+    name: (word)
+    expr: (string)))
