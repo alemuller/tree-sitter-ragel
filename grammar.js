@@ -15,13 +15,14 @@ module.exports = grammar({
     $._fsm_name,
     $._lhs,
     $._rhs,
+    $._escape
   ],
 
   conflicts: $ => [
   ],
 
   supertypes: $ => [
-    $._statement
+    $._statement,
   ],
 
   rules: {
@@ -182,8 +183,11 @@ module.exports = grammar({
 
     _factor: $ => choice(
       $._alphabet_num,
+      $.word,
+      $.string,
+      $.char_class,
+      $.regex,
       $.group,
-      $.string
     ),
 
     group: $ => seq(
@@ -195,16 +199,6 @@ module.exports = grammar({
     // =======
     //
     _alphabet_num: $ => choice(
-      $._number,
-      $.word
-    ),
-
-    string: $ => choice(
-      token(/"([^"\\]|\\.)*"i?/),
-      token(/'([^'\\]|\\.)*'i?/)
-    ),
-
-    _number: $ => choice(
       $.uint,
       $.signed,
       $.hex,
@@ -220,16 +214,92 @@ module.exports = grammar({
     hex_char:   $ => token(/0x[0-9a-fA-F]{2}/),
     word:       $ => token(/[a-zA-Z_][a-zA-Z_0-9]*/),
 
+    string: $ => choice(
+      token(/"([^"\\\n\r]|\\.)*"i?/),
+      token(/'([^'\\\n\r]|\\.)*'i?/)
+    ),
+
+    //
+    // Regex (character class)
+    // -----------------------
+    regex: $ => seq(
+      '/',
+      repeat($._re_reg_item),
+      '/',
+      optional(immd('i'))
+    ),
+
+    _re_reg_item: $ => choice(
+      alias($.reg_repeat,$.repeat),
+      $._reg_item
+    ),
+
+    reg_repeat: $ => seq(
+      $._reg_item, immd('*')
+    ),
+
+    _reg_item: $ => choice(
+      $.char_class,
+      alias('.',$.any),
+      $._codepoint
+    ),
+
+    char_class: $ => seq(
+      '[',
+      optional(choice(
+        alias($.re_negate, $.negate),
+        $._char_cls_expr
+      )),
+      ']',
+    ),
+
+    re_negate: $ => seq(
+      immd(prec(99,'^')),
+      optional($._char_cls_expr)
+    ),
+
+    _char_cls_expr: $ => repeat1(choice(
+      $.range,
+      $._codepoint
+    )),
+
+    range: $ => seq(
+      field('low', $._codepoint),
+      '-',
+      field('high', $._codepoint),
+    ),
+
+    _codepoint: $ => choice(
+      $.literal,
+      $._escape
+    ),
+
+    // any other token has preference
+    literal: $ => choice(
+      /[^\\\-\]]/,
+      immd(prec(2,/[ \t]/))
+    ),
+
     //
     // Escape sequence
     // ---------------
     _escape: $ => choice(
-      //$.quote,
       $.ctrl_code,
+      $.quote,
+      $.escape
     ),
 
-    ctrl_code: $ => token(seq(
+    ctrl_code: $ => immd(seq(
       '\\', choice('a', 'b', 't', 'n', 'v', 'f', 'r')
+    )),
+
+    quote: $ => immd(seq(
+      '\\', choice('\\', '.', '*', '[', ']', '/', '-')
+    )),
+
+    // unknown escape
+    escape: $ => immd(seq(
+      '\\', /./
     )),
 
     //

@@ -26,6 +26,41 @@
     ]
   },
   {
+    "type": "char_class",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "ctrl_code",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "negate",
+          "named": true
+        },
+        {
+          "type": "quote",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "combine",
     "named": true,
     "fields": {
@@ -33,6 +68,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "char_class",
+            "named": true
+          },
           {
             "type": "combine",
             "named": true
@@ -59,6 +98,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -102,6 +145,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -127,6 +174,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -166,6 +217,10 @@
       "required": false,
       "types": [
         {
+          "type": "char_class",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
@@ -179,6 +234,10 @@
         },
         {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -213,6 +272,10 @@
       "required": false,
       "types": [
         {
+          "type": "char_class",
+          "named": true
+        },
+        {
           "type": "combine",
           "named": true
         },
@@ -242,6 +305,10 @@
         },
         {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -321,6 +388,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -346,6 +417,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -389,6 +464,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -414,6 +493,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -464,6 +547,10 @@
       "required": false,
       "types": [
         {
+          "type": "char_class",
+          "named": true
+        },
+        {
           "type": "combine",
           "named": true
         },
@@ -489,6 +576,10 @@
         },
         {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -527,6 +618,10 @@
       "required": true,
       "types": [
         {
+          "type": "char_class",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
@@ -540,6 +635,10 @@
         },
         {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -602,6 +701,11 @@
     }
   },
   {
+    "type": "literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "machine_decl",
     "named": true,
     "fields": {
@@ -625,6 +729,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "char_class",
+            "named": true
+          },
           {
             "type": "combine",
             "named": true
@@ -655,6 +763,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -704,6 +816,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -733,6 +849,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -778,9 +898,21 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
-      "required": true,
+      "multiple": true,
+      "required": false,
       "types": [
+        {
+          "type": "char_class",
+          "named": true
+        },
+        {
+          "type": "ctrl_code",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
         {
           "type": "group",
           "named": true
@@ -790,7 +922,23 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "quote",
+          "named": true
+        },
+        {
+          "type": "range",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -813,6 +961,95 @@
     }
   },
   {
+    "type": "range",
+    "named": true,
+    "fields": {
+      "high": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ctrl_code",
+            "named": true
+          },
+          {
+            "type": "escape",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "quote",
+            "named": true
+          }
+        ]
+      },
+      "low": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ctrl_code",
+            "named": true
+          },
+          {
+            "type": "escape",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "quote",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "regex",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "any",
+          "named": true
+        },
+        {
+          "type": "char_class",
+          "named": true
+        },
+        {
+          "type": "ctrl_code",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
+        {
+          "type": "literal",
+          "named": true
+        },
+        {
+          "type": "quote",
+          "named": true
+        },
+        {
+          "type": "repeat",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "repeat",
     "named": true,
     "fields": {},
@@ -820,6 +1057,22 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "any",
+          "named": true
+        },
+        {
+          "type": "char_class",
+          "named": true
+        },
+        {
+          "type": "ctrl_code",
+          "named": true
+        },
+        {
+          "type": "escape",
+          "named": true
+        },
         {
           "type": "group",
           "named": true
@@ -833,7 +1086,19 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "negate",
+          "named": true
+        },
+        {
+          "type": "quote",
+          "named": true
+        },
+        {
+          "type": "regex",
           "named": true
         },
         {
@@ -918,6 +1183,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -943,6 +1212,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -990,6 +1263,10 @@
         "required": true,
         "types": [
           {
+            "type": "char_class",
+            "named": true
+          },
+          {
             "type": "combine",
             "named": true
           },
@@ -1015,6 +1292,10 @@
           },
           {
             "type": "negate",
+            "named": true
+          },
+          {
+            "type": "regex",
             "named": true
           },
           {
@@ -1090,6 +1371,10 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
@@ -1110,8 +1395,20 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "^",
     "named": false
+  },
+  {
+    "type": "any",
+    "named": true
   },
   {
     "type": "comment",
@@ -1122,8 +1419,16 @@
     "named": true
   },
   {
+    "type": "escape",
+    "named": true
+  },
+  {
     "type": "hex",
     "named": true
+  },
+  {
+    "type": "i",
+    "named": false
   },
   {
     "type": "import",
@@ -1136,6 +1441,10 @@
   {
     "type": "machine",
     "named": false
+  },
+  {
+    "type": "quote",
+    "named": true
   },
   {
     "type": "uint",

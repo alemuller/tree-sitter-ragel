@@ -35,6 +35,9 @@
 [
   "{"
   "}"
+  "/"
+  "["
+  "]"
 ] @punctuation.bracket
 
 (limits ["{" "}"] @repeat)
@@ -68,13 +71,24 @@
 
 [
   (hex_char)
+  (literal)
 ] @character
 
 (string) @string
 
+(regex) @string.regex
+
+[
+  (ctrl_code)
+  (quote)
+  (escape)
+] @string.escape
+
 ;;
 ;; Built-ins
 ;; =========
+(any) @constant.macro
+
 ((word) @constant.builtin
  (#any-of? @constant.builtin
     "any"
